@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.user.lessons.fragments_lessons.FragmentLesson;
+
 
 public class MainActivity extends AppCompatActivity {
     private EditText userName;
@@ -46,5 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void lesson7(View view) {
         startActivity(new Intent(this, LessonSeven.class));
+    }
+    public void lesson8(View view) {
+        startActivity(new Intent(this, FragmentLesson.class));
     }
 }
