@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_main"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/logo_large" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"/>
+
+        <EditText
+            android:id="@+id/userName"
+            android:background="#64818487"
+            style="@style/EditText"
+            android:drawableLeft="@mipmap/ic_input_name"
+            android:drawablePadding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_marginTop="20dp"
+            android:hint="Username" />
+
+        <EditText
+            android:id="@+id/password"
+            style="@style/EditText"
+            android:background="#64818487"
+            android:drawablePadding="20dp"
+            android:drawableLeft="@mipmap/ic_input_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_marginTop="10dp"
+            android:inputType="textPassword"
+            android:hint="Password" />
+
+        <Button
+            android:id="@+id/loginButton"
+            style="@style/MyButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/loggin_button_selector"
+            android:text="LOG IN" />
+
+        <TextView
+            android:id="@+id/forgot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:text="@string/forgot_your_username_password"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:src="@drawable/ic_pets_black_24dp"
+            android:clickable="true"
+            android:tint="@color/image_selectro"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/create"
+            style="@style/MyButton"
+            android:onClick="lesson7"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_height"
+            android:layout_gravity="center"
+            android:background="@color/orange"
+            android:text="CREATE ACCOUNT" />
+    </LinearLayout>
+
+
+</LinearLayout>
