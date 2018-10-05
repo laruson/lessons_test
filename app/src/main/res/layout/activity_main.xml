@@ -70,6 +70,7 @@
             android:layout_marginTop="5dp"
             android:paddingTop="5dp"
             android:paddingBottom="10dp"
+            android:clickable="true"
             android:text="@string/forgot_your_username_password"
             android:textColor="@color/white"
             android:textSize="14sp" />

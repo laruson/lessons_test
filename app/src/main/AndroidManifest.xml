@@ -24,6 +24,7 @@
         <activity android:name=".SecondActivity" />
         <activity android:name=".LessonSeven" />
         <service android:name=".MyIntentService"/>
+        <activity android:name=".fragments_lessons.FragmentLesson" />
     </application>
 
 </manifest>

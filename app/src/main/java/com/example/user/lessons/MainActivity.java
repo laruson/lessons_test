@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.lessons.fragments_lessons.FragmentLesson;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.loginButton);
         userName = findViewById(R.id.userName);
         password = findViewById(R.id.password);
+
+
 
         userName.setText(BuildConfig.VERSION_NAME);
 

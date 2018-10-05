@@ -9,8 +9,8 @@ import com.example.user.lessons.R
 
 class TwoFragment : Fragment() {
     companion object {
-        fun getFragment() : OneFragment{
-            return OneFragment()
+        fun getFragment() : TwoFragment{
+            return TwoFragment()
         }
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? { //set content
