@@ -1,4 +1,6 @@
 package com.gmail.kishkevich.superArh.presentation.base
 
-abstract class BaseRouter {
+import android.app.Activity
+
+abstract class BaseRouter <A : Activity> (val activity: A) {
 }

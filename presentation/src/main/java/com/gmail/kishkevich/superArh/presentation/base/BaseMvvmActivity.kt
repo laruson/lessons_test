@@ -5,15 +5,20 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import com.android.databinding.library.baseAdapters.BR
 
-abstract class BaseMvvmActivity<VM : BaseViewModel,
-                                B:ViewDataBinding> : BaseActivity() {
-    protected lateinit var viewModel : VM
-    protected lateinit var binding : B
+abstract class BaseMvvmActivity<
+        VM : BaseViewModel<R>,
+        R : BaseRouter<*>,
+        B : ViewDataBinding> : BaseActivity() {
+    protected lateinit var viewModel: VM
+    protected lateinit var binding: B
+    public lateinit var router: R
 
 
-    abstract fun provideViewModel() : VM
+    abstract fun provideViewModel(): VM
 
-    abstract fun provideLayoutId() : Int
+    abstract fun provideRouter(): R
+
+    abstract fun provideLayoutId(): Int
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,5 +26,17 @@ abstract class BaseMvvmActivity<VM : BaseViewModel,
         viewModel = provideViewModel()
         binding = DataBindingUtil.setContentView(this, provideLayoutId())
         binding.setVariable(BR.viewModel, viewModel)
+
+        router = provideRouter()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.addRouter(router)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        viewModel.removeRouter()
     }
 }

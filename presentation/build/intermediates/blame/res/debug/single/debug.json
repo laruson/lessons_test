@@ -644,10 +644,6 @@
         "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\758aafe3a113967c69a2730d3b59ec5b\\res\\color-v23\\abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "C:\\Users\\user\\AndroidStudioProjects\\lessons_test\\presentation\\build\\intermediates\\res\\merged\\debug\\layout_activity_loggin.xml.flat",
-        "source": "C:\\Users\\user\\AndroidStudioProjects\\lessons_test\\presentation\\src\\main\\res\\layout\\activity_loggin.xml"
-    },
-    {
         "merged": "C:\\Users\\user\\AndroidStudioProjects\\lessons_test\\presentation\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\758aafe3a113967c69a2730d3b59ec5b\\res\\drawable-mdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
@@ -878,6 +874,10 @@
     {
         "merged": "C:\\Users\\user\\AndroidStudioProjects\\lessons_test\\presentation\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "C:\\Users\\user\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\758aafe3a113967c69a2730d3b59ec5b\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_48dp.png"
+    },
+    {
+        "merged": "C:\\Users\\user\\AndroidStudioProjects\\lessons_test\\presentation\\build\\intermediates\\res\\merged\\debug\\layout_activity_student_list.xml.flat",
+        "source": "C:\\Users\\user\\AndroidStudioProjects\\lessons_test\\presentation\\src\\main\\res\\layout\\activity_student_list.xml"
     },
     {
         "merged": "C:\\Users\\user\\AndroidStudioProjects\\lessons_test\\presentation\\build\\intermediates\\res\\merged\\debug\\layout_abc_tooltip.xml.flat",

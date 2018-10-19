@@ -1,2 +1,1 @@
 com.gmail.kishkevich.domain
-int string app_name 0x7f150001
