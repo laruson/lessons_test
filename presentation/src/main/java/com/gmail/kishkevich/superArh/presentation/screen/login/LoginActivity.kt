@@ -1,7 +1,8 @@
 package com.gmail.kishkevich.superArh.presentation.screen.login
 
 import android.arch.lifecycle.ViewModelProviders
-import com.gmail.kishkevich.data.databinding.ActivityLogginBinding
+import com.gmail.kishkevich.presentation.R
+import com.gmail.kishkevich.presentation.databinding.ActivityLogginBinding
 
 import com.gmail.kishkevich.superArh.presentation.base.BaseMvvmActivity
 
@@ -11,6 +12,6 @@ class LoginActivity : BaseMvvmActivity<LoginViewModel, ActivityLogginBinding>() 
                 .get(LoginViewModel::class.java)
     }
 
-    override fun provideLayoutId(): Int = R.layout
+    override fun provideLayoutId(): Int = R.layout.activity_loggin
 
 }
