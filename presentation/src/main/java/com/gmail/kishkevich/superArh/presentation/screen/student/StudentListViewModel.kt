@@ -6,7 +6,7 @@ import android.util.Log
 import com.gmail.kishkevich.superArh.factory.UseCaseProvider
 import com.gmail.kishkevich.superArh.presentation.base.BaseViewModel
 
-class StudentListViewModel : BaseViewModel() {
+class StudentListViewModel() : BaseViewModel<StudentRouter>() {
 
     private val getStudentUseCase = UseCaseProvider.provideGetStudentUseCase()
     private val searchStudentUseCase = UseCaseProvider.provideSearchStudentUseCase()

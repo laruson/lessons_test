@@ -6,7 +6,14 @@ import com.gmail.kishkevich.presentation.databinding.ActivityStudentListBinding
 
 import com.gmail.kishkevich.superArh.presentation.base.BaseMvvmActivity
 
-class StudentListActivity : BaseMvvmActivity<StudentListViewModel, ActivityStudentListBinding>() {
+class StudentListActivity : BaseMvvmActivity<
+        StudentListViewModel
+        ,StudentRouter
+        , ActivityStudentListBinding>() {
+    override fun provideRouter(): StudentRouter {
+        return StudentRouter(this)
+    }
+
     override fun provideViewModel(): StudentListViewModel {
         return ViewModelProviders.of(this)
                 .get(StudentListViewModel::class.java)
