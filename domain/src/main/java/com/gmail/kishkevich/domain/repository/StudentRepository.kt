@@ -2,13 +2,15 @@ package com.gmail.kishkevich.domain.repository
 
 import com.gmail.kishkevich.domain.entity.Student
 import com.gmail.kishkevich.domain.entity.StudentSearch
+import io.reactivex.Completable
+import io.reactivex.Observable
 
 interface StudentRepository : BaseRepository {
-    fun get(): List<Student>
+    fun get(): Observable<List<Student>>
 
-    fun search(search: StudentSearch): List<Student>
+    fun search(search: StudentSearch): Observable<List<Student>>
 
-    fun update(student: Student): Boolean
+    fun update(student: Student): Completable
 
-    fun delete(studentId: String): Boolean
+    fun delete(studentId: String): Completable
 }
