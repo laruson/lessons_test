@@ -2,11 +2,17 @@ package com.gmail.kishkevich.superArh.presentation.screen.student.list
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import com.gmail.kishkevich.presentation.R
 import com.gmail.kishkevich.presentation.databinding.FragmentStudentListBinding
 import com.gmail.kishkevich.superArh.presentation.base.BaseMvvmFragment
 import com.gmail.kishkevich.superArh.presentation.screen.student.StudentRouter
+import com.jakewharton.rxbinding2.view.RxView
+import com.jakewharton.rxbinding2.widget.RxTextView
+import io.reactivex.rxkotlin.subscribeBy
+import java.util.concurrent.TimeUnit
 
 class StudentListFragment : BaseMvvmFragment<
         StudentListViewModel,
@@ -33,6 +39,25 @@ class StudentListFragment : BaseMvvmFragment<
 //        binding.recycler.layoutManager = LinerLayoutManager(context)
         binding.recycler.setHasFixedSize(true)
 
+        RxTextView.textChanges(binding.searchEditText)
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .subscribeBy{
+                    viewModel.search(it.toString())
+        }
+
+
+
+//        binding.searchEditText.addTextChangedListener(object : TextWatcher{
+//            override fun afterTextChanged(p0: Editable?) {
+//                viewModel.search(p0.toString())
+//            }
+//
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//        })
     }
 
 }
