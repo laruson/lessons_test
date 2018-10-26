@@ -5,7 +5,7 @@ import com.gmail.kishkevich.domain.usecases.GetStudentUseCase
 import com.gmail.kishkevich.domain.usecases.SearchStudentUseCase
 
 object UseCaseProvider {
-    fun provideGetStudentUseCase(): GetStudentUseCase{
+    fun provideStudentListUseCase(): GetStudentUseCase{
         return GetStudentUseCase(StudentRepositoryImpl())
     }
 

@@ -7,31 +7,36 @@ import com.gmail.kishkevich.superArh.presentation.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.ReplaySubject
 
-class StudentListViewModel() : BaseViewModel<StudentRouter>() {
+class StudentViewModel() : BaseViewModel<StudentRouter>() {
 
-    private val getStudentUseCase = UseCaseProvider.provideGetStudentUseCase()
-    private val searchStudentUseCase = UseCaseProvider.provideSearchStudentUseCase()
-
-    val studentSize = ObservableField<String>("no data")
-
-    private val publishSubject: ReplaySubject<String> = ReplaySubject.create()
-
-    init {
-        Log.e("AAA", "init")
-        addToDisposable(getStudentUseCase.get()
-                .subscribeBy(
-                        onNext = {
-                            studentSize.set("Student list.size() = ${it.size}")
-                        },
-                        onError = {
-                            studentSize.set("Student list.size() = $it")
-                        }))
-    }
-
-    fun onTextClick(){
-
-    }
 }
+
+
+
+
+//private val getStudentUseCase = UseCaseProvider.provideStudentListUseCase()
+//private val searchStudentUseCase = UseCaseProvider.provideSearchStudentUseCase()
+//
+//val studentSize = ObservableField<String>("no data")
+//
+//private val publishSubject: ReplaySubject<String> = ReplaySubject.create()
+//
+//init {
+//    Log.e("AAA", "init")
+//    addToDisposable(getStudentUseCase.get()
+//            .subscribeBy(
+//                    onNext = {
+//                        studentSize.set("Student list.size() = ${it.size}")
+//                    },
+//                    onError = {
+//                        studentSize.set("Student list.size() = $it")
+//                        router?.showError(it)
+//                    }))
+//}
+//
+//fun onTextClick(){
+//
+//}
 
 
 //        disposable = Observable
