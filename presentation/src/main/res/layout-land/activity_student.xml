@@ -16,7 +16,7 @@
         android:orientation="horizontal">
 
         <FrameLayout
-            android:id="@+id/containerList"
+            android:id="@+id/container"
             android:layout_width="300dp"
             android:layout_height="match_parent">
         </FrameLayout>

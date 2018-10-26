@@ -7,6 +7,10 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 
 class StudentRepositoryImpl : StudentRepository{
+    override fun getStudentById(id: String): Observable<Student> {
+        return Observable.just(Student("2","kek",25))
+    }
+
     override fun get(): Observable<List<Student>> {
         val list = listOf(Student("1", "lol",24),
                 Student("2","kek",25),

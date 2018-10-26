@@ -29,7 +29,7 @@ class StudentListFragment : BaseMvvmFragment<
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.recycler.adapter =
+        binding.recycler.adapter = viewModel.adapter
 //        binding.recycler.layoutManager = LinerLayoutManager(context)
         binding.recycler.setHasFixedSize(true)
 
