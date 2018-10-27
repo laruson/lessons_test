@@ -2,6 +2,7 @@ package com.gmail.kishkevich.superArh.presentation.screen.student.details
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.gmail.kishkevich.presentation.R
 import com.gmail.kishkevich.presentation.databinding.FragmentStudentDetailsBinding

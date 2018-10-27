@@ -2,7 +2,9 @@ package com.gmail.kishkevich.superArh.presentation.base
 
 import android.app.Activity
 import android.support.v4.app.FragmentManager
+import android.util.Log
 import android.widget.Toast
+import com.gmail.kishkevich.superArh.presentation.screen.student.list.StudentListFragment
 
 abstract class BaseRouter<A : Activity>(val activity: A) {
     fun goBack() {
@@ -21,11 +23,12 @@ abstract class BaseRouter<A : Activity>(val activity: A) {
                         addToBackStack: Boolean = false) {
         var fragmentTransient = fragmentManager.beginTransaction()
 
-        fragmentTransient.replace(containerResId, fragment, fragment::class.java.canonicalName)
+        fragmentTransient.hide(StudentListFragment.getInstance()).replace(containerResId, fragment, fragment::class.java.canonicalName)
 
         if (addToBackStack) {
             fragmentTransient.addToBackStack(null)
         }
+
         fragmentTransient.commit()
     }
 }
