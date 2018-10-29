@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.android.databinding.library.baseAdapters.BR
+
 
 abstract class BaseMvvmFragment<
         VM : BaseViewModel<R>,
@@ -23,9 +25,8 @@ abstract class BaseMvvmFragment<
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, provideLayoutId(), container, false)
-
         viewModel = provideViewModel()
-
+        binding.setVariable(BR.viewModel , viewModel)
         return binding.root
     }
 

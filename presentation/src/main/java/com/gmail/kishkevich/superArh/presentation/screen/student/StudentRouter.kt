@@ -1,5 +1,6 @@
 package com.gmail.kishkevich.superArh.presentation.screen.student
 
+import android.util.Log
 import android.view.View
 import com.gmail.kishkevich.presentation.R
 import com.gmail.kishkevich.superArh.presentation.base.BaseRouter

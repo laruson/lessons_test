@@ -2,6 +2,7 @@ package com.gmail.kishkevich.superArh.presentation.screen.student.list
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -36,7 +37,7 @@ class StudentListFragment : BaseMvvmFragment<
         super.onViewCreated(view, savedInstanceState)
 
         binding.recycler.adapter = viewModel.adapter
-//        binding.recycler.layoutManager = LinerLayoutManager(context)
+        binding.recycler.layoutManager = LinearLayoutManager(view.context)
         binding.recycler.setHasFixedSize(true)
 
         RxTextView.textChanges(binding.searchEditText)
