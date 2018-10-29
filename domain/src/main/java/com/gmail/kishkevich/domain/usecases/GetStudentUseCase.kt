@@ -1,12 +1,17 @@
 package com.gmail.kishkevich.domain.usecases
 
 import com.gmail.kishkevich.domain.entity.Student
+import com.gmail.kishkevich.domain.executer.PostExecutorThread
 import com.gmail.kishkevich.domain.repository.StudentRepository
 import io.reactivex.Observable
 
-class GetStudentUseCase(private val studentRepository: StudentRepository) : BaseUseCase() {
+class GetStudentUseCase(postExecutorThread : PostExecutorThread,
+                        private val studentRepository: StudentRepository) : BaseUseCase(postExecutorThread) {
     fun get(): Observable<List<Student>> {
-        return studentRepository.get()
+        return studentRepository
+                .get()
+                .observeOn(postExecutorThread)
+                .subscribeOn(workExecutorThread)
     }
 
 }
