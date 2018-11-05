@@ -22,7 +22,7 @@ class StudentListViewModel : BaseViewModel<StudentRouter>() {
     lateinit var adapter : StudentListAdapter
 
     init {
-        studentListUseCase.get().subscribeBy{
+        studentListUseCase.get().subscribeBy{ it ->
             adapter = StudentListAdapter {
                 router?.goToStudentDetails(it.id)
             }
