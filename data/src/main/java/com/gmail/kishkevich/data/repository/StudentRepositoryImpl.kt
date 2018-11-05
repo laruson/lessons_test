@@ -13,6 +13,13 @@ import io.reactivex.Observable
 
 class StudentRepositoryImpl(val restService: RestService,
                             val studentDao: StudentDao) : StudentRepository {
+
+    private var lastTimeUpdate = 0L
+
+    companion object {
+        private var TIME_BUFFER = 60000
+    }
+
     override fun getStudentById(id: String): Observable<Student> {
         return Observable.just(Student("2", "kek", 25))
     }
@@ -33,10 +40,12 @@ class StudentRepositoryImpl(val restService: RestService,
 //        }
 
         return studentDao.getAll()
-                .flatMap { it ->
-                    if (it.isEmpty()) {
+                .flatMap { list ->
+                    if (list.isEmpty() || System.currentTimeMillis() - lastTimeUpdate > TIME_BUFFER) {
                         restService.getStudents()
                                 .doOnNext { it ->
+                                    lastTimeUpdate = System.currentTimeMillis()
+                                    studentDao.deleteAll()
                                     it.map {
                                         studentDao.insert(it.transformToDB())
                                     }
@@ -46,8 +55,17 @@ class StudentRepositoryImpl(val restService: RestService,
                                         it.transformToDomain()
                                     }
                                 }
+                                .onErrorReturn { it ->
+                                    if (list.isEmpty()) {
+                                        throw it
+                                    } else {
+                                        list.map {
+                                            it.transformToDomain()
+                                        }
+                                    }
+                                }
                     } else {
-                        Observable.just(it).map { it ->
+                        Observable.just(list).map { it ->
                             it.map {
                                 it.transformToDomain()
                             }
