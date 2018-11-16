@@ -5,11 +5,14 @@ import com.gmail.kishkevich.data.db.entity.transformToDomain
 import com.gmail.kishkevich.data.entity.transformToDB
 import com.gmail.kishkevich.data.entity.transformToDomain
 import com.gmail.kishkevich.data.net.RestService
+import com.gmail.kishkevich.domain.entity.AppErrorType
+import com.gmail.kishkevich.domain.entity.AppException
 import com.gmail.kishkevich.domain.entity.Student
 import com.gmail.kishkevich.domain.entity.StudentSearch
 import com.gmail.kishkevich.domain.repository.StudentRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
+import java.net.SocketTimeoutException
 
 class StudentRepositoryImpl(val restService: RestService,
                             val studentDao: StudentDao) : StudentRepository {
@@ -22,6 +25,12 @@ class StudentRepositoryImpl(val restService: RestService,
 
     override fun getStudentById(id: String): Observable<Student> {
         return Observable.just(Student("2", "kek", 25))
+                .doOnError {
+                    if (it is SocketTimeoutException)
+                        AppException(AppErrorType.SERVER_IS_NOT_AVAILABLE)
+                    else
+                        AppException(AppErrorType.UNKNOWN)
+                }
     }
 
     override fun get(): Observable<List<Student>> {
