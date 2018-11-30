@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.gmail.kishkevich.superArh.presentation.utils.recycler.StudentListAdapter.Holder" />
+            type="com.gmail.kishkevich.superArh.presentation.screen.student.list.items.StudentItemViewModel" />
     </data>
 
     <LinearLayout

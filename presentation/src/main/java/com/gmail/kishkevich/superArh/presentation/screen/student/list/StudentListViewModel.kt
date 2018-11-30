@@ -5,23 +5,30 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.gmail.kishkevich.domain.entity.Student
 import com.gmail.kishkevich.domain.entity.StudentSearch
+import com.gmail.kishkevich.domain.usecases.GetStudentUseCase
+import com.gmail.kishkevich.domain.usecases.SearchStudentUseCase
+import com.gmail.kishkevich.superArh.app.App
 import com.gmail.kishkevich.superArh.factory.UseCaseProvider
 import com.gmail.kishkevich.superArh.presentation.base.BaseViewModel
 import com.gmail.kishkevich.superArh.presentation.screen.student.StudentRouter
 import com.gmail.kishkevich.superArh.presentation.utils.recycler.StudentListAdapter
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
+import javax.inject.Inject
 
 class StudentListViewModel : BaseViewModel<StudentRouter>() {
     val isProgressEnabled = ObservableBoolean(false)
 
-    private val studentListUseCase = UseCaseProvider.provideStudentListUseCase()
+    @Inject
+    lateinit var studentListUseCase : GetStudentUseCase
 
-    private val studentSearchUseCase = UseCaseProvider.provideSearchStudentUseCase()
+    @Inject
+    lateinit var studentSearchUseCase : SearchStudentUseCase
 
     lateinit var adapter : StudentListAdapter
 
     init {
+        App.appComponent.inject(this)
         studentListUseCase.get().subscribeBy{ it ->
             adapter = StudentListAdapter {
                 router?.goToStudentDetails(it.id)

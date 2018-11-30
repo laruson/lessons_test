@@ -2,6 +2,7 @@ package com.gmail.kishkevich.data.db.dao
 
 import android.arch.persistence.room.*
 import com.gmail.kishkevich.data.db.entity.StudentDB
+import io.reactivex.Flowable
 import io.reactivex.Observable
 
 @Dao
@@ -19,8 +20,8 @@ interface StudentDao {
     fun deleteAll()
 
     @Query("SELECT * FROM student ORDER BY name")
-    fun getAll(): Observable<List<StudentDB>>
+    fun getAll(): Flowable<List<StudentDB>>
 
     @Query("SELECT * FROM student WHERE id=:id LIMIT 1")
-    fun getById(id: String): Observable<StudentDB>
+    fun getById(id: String): Flowable<StudentDB>
 }

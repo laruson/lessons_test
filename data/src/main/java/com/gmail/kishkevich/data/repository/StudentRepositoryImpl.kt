@@ -42,45 +42,45 @@ class StudentRepositoryImpl(val restService: RestService,
 //
 //
 //        return  Observable.just(list)
-//        return restService.getStudents().map { it ->
-//            it.map {
-//                it.transformToDomain()
-//            }
-//        }
+        return restService.getStudents().map { it ->
+            it.map {
+                it.transformToDomain()
+            }
+        }
 
-        return studentDao.getAll()
-                .flatMap { list ->
-                    if (list.isEmpty() || System.currentTimeMillis() - lastTimeUpdate > TIME_BUFFER) {
-                        restService.getStudents()
-                                .doOnNext { it ->
-                                    lastTimeUpdate = System.currentTimeMillis()
-                                    studentDao.deleteAll()
-                                    it.map {
-                                        studentDao.insert(it.transformToDB())
-                                    }
-                                }
-                                .map { it ->
-                                    it.map {
-                                        it.transformToDomain()
-                                    }
-                                }
-                                .onErrorReturn { it ->
-                                    if (list.isEmpty()) {
-                                        throw it
-                                    } else {
-                                        list.map {
-                                            it.transformToDomain()
-                                        }
-                                    }
-                                }
-                    } else {
-                        Observable.just(list).map { it ->
-                            it.map {
-                                it.transformToDomain()
-                            }
-                        }
-                    }
-                }
+//        return studentDao.getAll()
+//                .flatMap { list ->
+//                    if (list.isEmpty() || System.currentTimeMillis() - lastTimeUpdate > TIME_BUFFER) {
+//                        restService.getStudents()
+//                                .doOnNext { it ->
+//                                    lastTimeUpdate = System.currentTimeMillis()
+//                                    studentDao.deleteAll()
+//                                    it.map {
+//                                        studentDao.insert(it.transformToDB())
+//                                    }
+//                                }
+//                                .map { it ->
+//                                    it.map {
+//                                        it.transformToDomain()
+//                                    }
+//                                }
+//                                .onErrorReturn { it ->
+//                                    if (list.isEmpty()) {
+//                                        throw it
+//                                    } else {
+//                                        list.map {
+//                                            it.transformToDomain()
+//                                        }
+//                                    }
+//                                }
+//                    } else {
+//                        Observable.just(list).map { it ->
+//                            it.map {
+//                                it.transformToDomain()
+//                            }
+//                        }
+//                    }
+//                }
     }
 
     override fun search(search: StudentSearch): Observable<List<Student>> {
