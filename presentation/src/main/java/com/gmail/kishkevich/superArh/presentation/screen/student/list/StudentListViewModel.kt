@@ -11,6 +11,7 @@ import com.gmail.kishkevich.superArh.app.App
 import com.gmail.kishkevich.superArh.factory.UseCaseProvider
 import com.gmail.kishkevich.superArh.presentation.base.BaseViewModel
 import com.gmail.kishkevich.superArh.presentation.screen.student.StudentRouter
+import com.gmail.kishkevich.superArh.presentation.screen.student.list.items.StudentItemAdapter
 import com.gmail.kishkevich.superArh.presentation.utils.recycler.StudentListAdapter
 import io.reactivex.Observable
 import io.reactivex.rxkotlin.subscribeBy
@@ -25,18 +26,26 @@ class StudentListViewModel : BaseViewModel<StudentRouter>() {
     @Inject
     lateinit var studentSearchUseCase: SearchStudentUseCase
 
-    lateinit var adapter: StudentListAdapter
+    var adapter = StudentItemAdapter()
 
     init {
         App.appComponent.inject(this)
-        adapter = StudentListAdapter {
-            router?.goToStudentDetails(it.id)
-        }
+//        adapter = StudentListAdapter {
+//            router?.goToStudentDetails(it.id)
+//        }
+        adapter.clickItemSubject.subscribeBy (
+                onNext = {
+                    router?.goToStudentDetails(it.item.id)
+                },
+                onError = {
+                    router?.showError(it)
+                }
+        )
 
         isProgressEnabled.set(true)
         addToDisposable(studentListUseCase.get().subscribeBy(
                 onNext = {
-                    adapter.setStudents(it)
+                    adapter.addItems(it)
                     isProgressEnabled.set(false)
                 },
                 onError = {
@@ -54,7 +63,7 @@ class StudentListViewModel : BaseViewModel<StudentRouter>() {
 
         addToDisposable(studentSearchUseCase.search(studentSearch).subscribeBy(
                 onNext = {
-                    adapter.setStudents(it)
+                    adapter.addItems(it)
                 },
                 onError = {
                     router?.showError(it)
