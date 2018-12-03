@@ -8,5 +8,5 @@ import com.gmail.kishkevich.superArh.presentation.base.recycler.BaseViewHolder
 class StudentItemViewHolder : BaseViewHolder
 <Student,
         StudentItemViewModel,
-        ItemStudentBinding>(DataBindingUtil.inflate()) {
+        ItemStudentBinding>() {
 }

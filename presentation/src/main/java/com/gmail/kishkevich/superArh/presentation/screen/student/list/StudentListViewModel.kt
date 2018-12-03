@@ -20,20 +20,17 @@ class StudentListViewModel : BaseViewModel<StudentRouter>() {
     val isProgressEnabled = ObservableBoolean(false)
 
     @Inject
-    lateinit var studentListUseCase : GetStudentUseCase
+    lateinit var studentListUseCase: GetStudentUseCase
 
     @Inject
-    lateinit var studentSearchUseCase : SearchStudentUseCase
+    lateinit var studentSearchUseCase: SearchStudentUseCase
 
-    lateinit var adapter : StudentListAdapter
+    lateinit var adapter: StudentListAdapter
 
     init {
         App.appComponent.inject(this)
-        studentListUseCase.get().subscribeBy{ it ->
-            adapter = StudentListAdapter {
-                router?.goToStudentDetails(it.id)
-            }
-
+        adapter = StudentListAdapter {
+            router?.goToStudentDetails(it.id)
         }
 
         isProgressEnabled.set(true)
