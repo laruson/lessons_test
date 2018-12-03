@@ -15,36 +15,12 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class AppModule(private val context: Context) {
+class AppModule() {
 
     @Provides
     @Singleton
-    fun provideContext(): Context {
-        return context;
-    }
-
-    @Provides
-    @Singleton
-    fun provideStudentRep(studentDao: StudentDao, restService: RestService): StudentRepository {
-        return StudentRepositoryImpl(restService, studentDao)
-    }
-
-    @Provides
-    @Singleton
-    fun provideStudentDao(appDataBase: AppDataBase): StudentDao {
-        return appDataBase.getStudentDao()
-    }
-
-    @Provides
-    @Singleton
-    fun provideAppDataBase(): AppDataBase {
-        return AppDataBase.getInstance(context)
-    }
-
-    @Provides
-    @Singleton
-    fun provideRestService(@Named(URL_NAME_INJECT_One) serviceUrl:String): RestService {
-        return RestService(serviceUrl)
+    fun provideContext(app:App): Context {
+        return app.applicationContext;
     }
 
     @Provides
@@ -53,14 +29,5 @@ class AppModule(private val context: Context) {
         return UIThread()
     }
 
-    @Provides
-    @Named(URL_NAME_INJECT_One)
-    @Singleton
-    fun provideServerOne(): String = "http://"
-
-    @Provides
-    @Named(URL_NAME_INJECT_Two)
-    @Singleton
-    fun provideServerTwo(): String = "http://"
 
 }

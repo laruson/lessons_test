@@ -13,8 +13,9 @@ import com.gmail.kishkevich.domain.repository.StudentRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
 import java.net.SocketTimeoutException
+import javax.inject.Inject
 
-class StudentRepositoryImpl(val restService: RestService,
+class StudentRepositoryImpl @Inject constructor (val restService: RestService,
                             val studentDao: StudentDao) : StudentRepository {
 
     private var lastTimeUpdate = 0L

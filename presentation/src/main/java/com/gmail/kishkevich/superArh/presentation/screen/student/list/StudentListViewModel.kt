@@ -29,7 +29,7 @@ class StudentListViewModel : BaseViewModel<StudentRouter>() {
     var adapter = StudentItemAdapter()
 
     init {
-        App.appComponent.inject(this)
+//        App.appComponent.inject(this)
 //        adapter = StudentListAdapter {
 //            router?.goToStudentDetails(it.id)
 //        }

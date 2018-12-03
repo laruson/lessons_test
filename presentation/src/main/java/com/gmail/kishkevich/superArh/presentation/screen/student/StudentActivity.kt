@@ -11,6 +11,7 @@ class StudentActivity : BaseMvvmActivity<
         StudentViewModel
         ,StudentRouter
         , ActivityStudentBinding>() {
+
     override fun provideRouter(): StudentRouter {
         return StudentRouter(this)
     }
